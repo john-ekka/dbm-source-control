@@ -11,8 +11,9 @@ jobs:
     steps:
       - name: Validate Branch Name
         run: |
-          branch_name=$(echo "${GITHUB_REF#refs/heads/}")
-          if ! [[ "$branch_name" =~ ^[0-9]+(\.[0-9]+)*$ ]]; then
-            echo "Error: Branch name must only contain digits and decimals."
+          sourceBranchName = "${{github.head.ref}}"
+          echo "sourceBranchName -> $sourceBranchName"
+          if ! [[ "$sourceBranchName" =~ ^[0-9]+(\.[0-9]+)*$ ]]; then
+            echo "Error: The source branch name must only contain numerics/digits and decimals/dots"
             exit 1
           fi
