@@ -1,9 +1,9 @@
 name: Enforce Branch Naming
 
 on:
-  push:
+  pull_request:
     branches:
-      - '*'
+      - review/dba
 
 jobs:
   enforce-branch-naming:
